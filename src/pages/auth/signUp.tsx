@@ -66,10 +66,10 @@ export default function SignUp() {
             メール
           </label>
           <input
-            className="mx-2 w-1/2 rounded-sm border-b border-slate-300 bg-transparent text-center placeholder:text-center focus:outline-none"
+            className="mx-2 w-2/3 rounded-sm border-b border-slate-300 bg-transparent text-center placeholder:text-center focus:outline-none"
             name="email"
             type="email"
-            placeholder="例：tommy@google.com"
+            placeholder="例：name@email.com"
             required
           />
           <label className="mt-5 px-1 text-center text-xs">パスワード</label>
@@ -77,7 +77,7 @@ export default function SignUp() {
             className="mx-2 w-1/2 rounded-sm border-b border-slate-300 bg-transparent text-center placeholder:text-center focus:outline-none"
             name="password"
             type="password"
-            placeholder="なるべく長く、覚えやすいもの"
+            placeholder="なるべく長く"
             required
           />
           <label className="mt-5 px-1 text-center text-xs">

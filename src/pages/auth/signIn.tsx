@@ -77,7 +77,7 @@ export default function Login() {
           </button>
         </form>
       </div>
-      <button type="button" onClick={handleGoback} className="mt-10">
+      <button type="button" onClick={handleGoback} className="mt-10 mb-24">
         <HomeModernIcon className="h-8 w-8 text-slate-500 transition-all hover:scale-105 hover:text-pink-500" />
       </button>
     </div>
