@@ -6,15 +6,17 @@ import React, { type FormEvent, Fragment, useEffect, useState } from "react"
 import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline"
 import Lottie from "lottie-react"
 import paperPlane from "../../lottie/paperPlane.json"
+import { useRouter } from "next/router"
 
 export default function Menu() {
+  const router = useRouter()
   // session
-  const { data: sessionData } = useSession()
+  const { data: sessionData, status: sessionStatus } = useSession()
 
   // api
   const recipes = api.recipe.getRecipe.useQuery(
     { email: sessionData?.user.email ?? "" },
-    { enabled: sessionData?.user !== undefined }
+    { enabled: sessionStatus === "authenticated" }
   )
   const createSchedule = api.menuSchedule.createSchedule.useMutation()
 
@@ -31,6 +33,12 @@ export default function Menu() {
   const dateNow = new Date().toISOString().split("T")[0]
 
   // effects
+  useEffect(() => {
+    if (sessionStatus === "unauthenticated") {
+      router.push("/auth/signIn").catch(e=>console.error(e))
+    }
+  },[sessionStatus, router])
+  
   useEffect(() => {
     const menuIds = menus.map((menu) => menu.id).filter((id) => id !== "")
     const newIngredients = menuIds

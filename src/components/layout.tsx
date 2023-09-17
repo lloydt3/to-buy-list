@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const { data: s } = useSession()
   return (
     <>
-      <main className="inset-0 min-h-screen bg-gradient-to-b from-transparent to-slate-300">
+      <main className="-inset-4 min-h-screen bg-gradient-to-b from-transparent to-slate-300">
         {s?.user && <NavMenu />}
         {children}
       </main>

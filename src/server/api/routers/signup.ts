@@ -37,7 +37,6 @@ export const signUpRouter = createTRPCRouter({
           message: `${input.name} created!`,
         }
       } catch (e) {
-        console.log("triggered!!")
         if (e instanceof PrismaClientKnownRequestError) {
           console.log("prisma error!!!!", e.code)
           if (e.code === "P2002")

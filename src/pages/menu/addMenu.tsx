@@ -12,7 +12,7 @@ export default function AddMenu() {
   const router = useRouter()
 
   // sesssion
-  const { data: sessionData } = useSession()
+  const { data: sessionData, status: sessionStatus } = useSession()
 
   // hooks
   const [enableApi, setEnableApi] = useState(false)
@@ -20,7 +20,7 @@ export default function AddMenu() {
   const [showAddIngreButton, setShowAddIngreButton] = useState(false)
   const [showEditIngreButton, setShowEditIngreButton] = useState(false)
   const [menuIngredient, setMenuIngredient] = useState<IMenuIngredient[]>([
-    { id: "", name: "", unit:"", description: "", quantity: 1 },
+    { id: "", name: "", unit: "", description: "", quantity: 1 },
   ])
   const [menuName, setMenuName] = useState<string>("")
   const [description, setDescription] = useState<string>("")
@@ -29,15 +29,15 @@ export default function AddMenu() {
   // api
   const ingredientList = api.ingredient.getIngredients.useQuery(
     { email: sessionData?.user.email ?? "" },
-    { enabled: enableApi }
+    { enabled: sessionStatus === "authenticated" }
   )
   const createRecipe = api.recipe.createRecipe.useMutation()
 
   // effects that i really hate
   useEffect(() => {
-    if (sessionData) setEnableApi(true)
-    else setEnableApi(false)
-  }, [sessionData])
+    if (sessionStatus === "unauthenticated")
+      router.push("/auth/signIn").catch((e) => console.error(e))
+  }, [sessionStatus, router])
 
   // handlers
   const handleFormSubmit = (e: FormEvent) => {

@@ -13,6 +13,20 @@ datasource db {
   relationMode = "prisma"
 }
 
+model ToBuyList {
+  id                 String   @id @default(cuid())
+  listName           String
+  name               String
+  count              String
+  status             String
+  createdByUserEmail String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User     @relation(fields: [createdByUserEmail], references: [email], onDelete: Cascade)
+
+  @@index([createdByUserEmail])
+}
+
 model Example {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
@@ -61,6 +75,7 @@ model User {
   ingredients   Ingredients[]
   recipe        Recipe[]
   MenuSchedule  MenuSchedule[]
+  toBuyList     ToBuyList[]
 }
 
 model VerificationToken {

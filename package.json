@@ -20,6 +20,8 @@
     "@trpc/react-query": "^10.26.0",
     "@trpc/server": "^10.26.0",
     "bcrypt": "^5.1.0",
+    "client@latest": "link:prisma/client@latest",
+    "formik": "^2.4.4",
     "framer-motion": "^10.16.1",
     "lottie-react": "^2.4.0",
     "next": "^13.4.2",
@@ -27,6 +29,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "1.12.2",
+    "yup": "^1.2.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -44,7 +47,7 @@
     "postcss": "^8.4.21",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
-    "prisma": "^5.1.1",
+    "prisma": "^5.2.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.0.4"
   },
