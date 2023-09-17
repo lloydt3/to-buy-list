@@ -83,7 +83,7 @@ export default function Home() {
     <>
       <Head>
         <title>ものリス</title>
-        <meta name="to-buy-list" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="static min-h-screen">
